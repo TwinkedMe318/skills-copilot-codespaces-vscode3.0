@@ -1,0 +1,149 @@
+print ("contract OwnerOnlyContract")
+print    ("address public owner = 0xb8270533Db6C2b738d4B3365410054e876F3D3F")
+
+print   (" // Modifier to restrict access to the owner")
+    ("modifier onlyOwner()") ("{
+        require(msg.sender == owner,") ("Only the owner can perform this action");
+        _;
+    }
+
+    // Function to get the owner
+    function getOwner() public view returns (address) {
+        return owner;
+    }
+
+    // Payable function to allow only the owner to deposit Ether
+    function depositFunds() public payable onlyOwner {
+        require(msg.value > 0, "Must send Ether");
+    }
+
+    // Function to withdraw all contract funds, restricted to the owner
+    function withdrawFunds() public onlyOwner {
+        payable(owner).transfer(address(this).balance);
+    }
+
+    // Fallback function to reject unintended Ether transfers
+    fallback() external payable {
+        revert("Direct Ether transfers are not allowed");
+    }
+
+    // Receive function to reject unintended Ether transfers
+    receive() external payable {
+        revert("Direct Ether transfers are not allowed");
+    }
+}
+print(" 
+I'm public virtual returns (bool) { address owner = _msgSender(); _transfer(owner, to, value); return true; } function allowance(address owner, address spender) public view virtual returns (uint256) { return _allowances[owner][spender]; } function approve(address spender, uint256 value) public virtual returns (bool) { address owner = _msgSender(); _approve(owner, spender, value); return true; } function transferFrom(address from, address to, uint256 value) public virtual returns (bool) { address spender = _msgSender(); _spendAllowance(from, spender, value); _transfer(from, to, value); return true; } function _transfer(address from, address to, uint256 value) internal { if (from == address(0)) { revert ERC20InvalidSender(address(0)); } if (to == address(0)) { revert ERC20InvalidReceiver(address(0)); } _update(from, to, value); } function _update(address from, address to, uint256 value) internal virtual { if (from == address(0)) { _totalSupply += value; } else { uint256 fromBalance = _balances[from]; if (fromBalance < value) { revert ERC20InsufficientBalance(from, fromBalance, value); } unchecked { _balances[from] = fromBalance - value; } } if (to == address(0)) { unchecked { _totalSupply -= value; } } else { unchecked { _balances[to] += value; } } emit Transfer(from, to, value); } function _mint(address account, uint256 value) internal { if (account == address(0)) { revert ERC20InvalidReceiver(address(0)); } _update(address(0), account, value Certainly! I'll continue from where we left off and complete the `ERC20` contract, then define the `Splendor` contract: solidity
+}
+
+function _burn(address account, uint256 value) internal {
+if (account == address(0)) {
+revert ERC20InvalidSender(address(0));
+}
+_update(account, address(0), value);
+}
+
+function _approve(address owner, address spender, uint256 value) internal {
+_approve(owner, spender, value, true);
+}
+
+function _approve(address owner, address spender, uint256 value, bool emitEvent) internal virtual {
+if (owner == address(0)) {
+revert ERC20InvalidApprover(address(0));
+}
+if (spender == address(0)) {
+revert ERC20InvalidSpender(address(0));
+}
+_allowances[owner][spender] = value;
+if (emitEvent) {
+emit Approval(owner, spender, value);
+}
+}
+
+function _spendAllowance(address owner, address spender, uint256 value) internal virtual {
+uint256 currentAllowance = allowance(owner, spender);
+if (currentAllowance != type(uint256).max) {
+if (currentAllowance < value) {
+revert ERC20InsufficientAllowance(spender, currentAllowance, value);
+}
+unchecked {
+_approve(owner, spender, currentAllowance - value, false);
+}
+}
+}
+}
+
+contract Splendor is ERC20 {
+constructor() ERC20("Splendor", "SPL") {
+address owner = _msgSender();
+_mint(owner, 1000000000 * 10 ** decimals());
+}
+}
+```
+
+"contract": {
+"contract_address": "0x721ED067e04dC811c94c9A0C45b6160De799E2C0",
+"parties": {
+"borrower": {
+"name": "Cory K Washington",
+"company": "Nells Carpool and Transportation Services C-Corporation Franchise",
+"role": "Owner",
+"borrower_account": "Your Deposit Account",
+"address": "0xAf227Cf67c13B54246B5220608fee8ee000Dbe53"
+},
+"lender": {
+"name": "Investor",
+"amount": 6300000000,
+"currency": "USD",
+"api_key": "Your API Key",
+"address": "0xAf227Cf67c13B54246B5220608fee8ee000Dbe53"
+}
+},
+"ownership": {
+"owner": "Cory K Washington (Geo)",
+"ownership_percentage": 100,
+"description": "Cory K Washington (Geo) is 100% the only owner of this contract address and companies."
+},
+"purpose": [
+{
+"description": "Expand and develop an application for Nells Carpool and Transportation Services",
+"details": "Include features for carpooling and transportation management."
+},
+{
+"description": "Pay franchise fee for a nearby company",
+"details": "Ensure proximity to enhance service offerings."
+},
+{
+"description": "Relaunch fashion brand 4-Ever-Drip in Italy",
+"details": "Focus on merchandise for all demographics including adults, youth, and pets."
+}
+],
+"financial_terms": {
+"amount": 6300000000,
+"milestones": {
+"shoe_production": {
+"target": 7,
+"price_range": {
+"min": 200,
+"max": 500
+},
+"material": "Raw Italian material and cotton"
+}
+}
+},
+"additional_terms": {
+"community_support": {
+"description": "Provide transportation to and from college for founders of Etherscan",
+"gesture": "Gift in the form of an envelope to show appreciation."
+},
+"business_growth": {
+"predicted_value": "Trillion dollar mark within two years",
+"industry": "Multi-trillion dollar industry"
+}
+},
+"commitment": {
+"intent": "Always act with integrity and care for community interests.",
+"business_operations": "N.C.A.T.S will continue to be in high demand with ongoing production."
+}
+}
+}")
