@@ -1,1 +1,12 @@
-.devcontainer/devcontainer.json
+
+{
+    "name": "my-dev-container",
+    "image": "mcr.microsoft.com/vscode/devcontainers/base",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "GitHub.copilot"
+        ]
+      }
+    }
+  }
